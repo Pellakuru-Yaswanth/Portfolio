@@ -160,7 +160,9 @@ body {
 }
 .gradient-text {
   background: linear-gradient(135deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text; -webkit-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 .hero-divider { width: 60px; height: 4px; background: var(--primary); margin: 25px auto; border-radius: 2px; }
 .hero-desc {
