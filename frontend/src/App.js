@@ -3,10 +3,11 @@ import './App.css';
 
 function App() {
   const [activeTab, setActiveTab] = useState('projects');
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Intersection Observer for scroll animations
   useEffect(() => {
     const observerOptions = { threshold: 0.15 };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -23,11 +24,19 @@ function App() {
     return () => observer.disconnect();
   }, [activeTab]);
 
+  // Replace YOUR_FILE_ID_HERE with your actual Google Drive ID
+  const resumeLink = "https://drive.google.com/file/d/1Ox6OZ5-l2nj0r55QTjtrfpGwrd10lNYj/view?usp=drive_link";
+
   const skills = [
-    { cat: "Backend Architecture", items: ["Java", "Spring Boot", "Microservices", "Hibernate", "JPA"] },
-    { cat: "Frontend Systems", items: ["React.js", "Redux", "JavaScript (ES6+)", "CSS3"] },
-    { cat: "Core Engineering", items: ["DSA", "System Design", "SQL", "Git", "Agile/Scrum"] },
-    { cat: "Cloud & Testing", items: ["AWS Fundamentals", "Postman", "JUnit", "CI/CD"] }
+    { cat: "Programming Languages", items: ["Java", "Streams API)", "JavaScript (ES6+)", "SQL", "HTML5", "CSS3", "SQL", "Python"]},
+    { cat: "Backend Technologies", items: ["Spring Boot", "Spring MVC", "Spring Data JPA", "Hibernate ORM", "Microservices", "Node.js", "Express"] },
+    { cat: "Frontend Technologies", items: ["React.js", "Redux/Context API", "Axios", "Bootstrap"] },
+    { cat: "API & Web Services", items: ["RESTful APIs (Design & Dev)", "JSON"]},
+    { cat: "Databases", items: ["MySQL", "MongoDB", "Database Design & Optimization"]},
+    { cat: "DevOps & Cloud", items: ["Git", "GitHub", "CI/CD", "AWS Fundamentals (EC2, S3)", "Linux Basics"]},
+    { cat: "Testing & QA", items: ["JUnit 5", "Unit/Integration Testing", "Test-Driven Development (TDD)", "Postman (API Testing)"]},
+    { cat: "Core Engineering", items: ["Data Structures & Algorithms", "OOP", "SDLC"] },
+    { cat: "Tools & Practices", items: ["Maven", "Agile/Scrum", "Debugging & Performance Optimization", "Responsive Design"] }
   ];
 
   const projectData = [
@@ -35,7 +44,7 @@ function App() {
       title: "ShopEase E-Commerce", 
       tech: "Spring Boot • React • Microservices",
       desc: "Architected a modular full-stack platform with JWT stateless authentication. Engineered RESTful APIs to handle high-concurrency requests with optimized database indexing.",
-      github: "#",
+      github: "https://github.com/Pellakuru-Yaswanth/ShopEase",
       live: "#",
     },
     { 
@@ -46,6 +55,7 @@ function App() {
       live: "#",
     }
   ];
+
   const [projectErrors, setProjectErrors] = useState(["", ""]);
 
   const achievementData = [
@@ -57,22 +67,55 @@ function App() {
 
   const handleRedirect = (project, projectIndex, linkType) => {
     const tempProjectErrors = ["", ""];
-    if(linkType=="github"){
-      if(project.github=="#") tempProjectErrors[projectIndex] = "GitHub Repo is not available for this project";
-      else window.location.href = project.github;
+    if(linkType === "github"){
+      if(project.github === "#") tempProjectErrors[projectIndex] = "GitHub Repo is not available";
+      else window.open(project.github, "_blank");
     } else {
-      if(project.live=="#") tempProjectErrors[projectIndex] = "Live is not available for this project";
-      else window.location.href = project.live;
+      if(project.live === "#") tempProjectErrors[projectIndex] = "Live Demo is not available";
+      else window.open(project.live, "_blank");
     }
     setProjectErrors(tempProjectErrors);
   }
 
-  const handleErrors = () => {
-    setProjectErrors(prev => ["", ""]);
-  }
+  const scrollToSection = (id) => {
+    setIsMenuOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <div className="portfolio-parent">
+    <div className={`portfolio-parent ${isMenuOpen ? 'menu-visible' : ''}`}>
+      
+      {/* OVERLAY: Closes menu when clicking on normal screen */}
+      <div 
+        className={`menu-overlay ${isMenuOpen ? 'active' : ''}`} 
+        onClick={() => setIsMenuOpen(false)}
+      ></div>
+
+      {/* HAMBURGER TRIGGER */}
+      <button className={`menu-trigger ${isMenuOpen ? 'open' : ''}`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+        <div className="bar"></div>
+        <div className="bar"></div>
+      </button>
+
+      {/* SIDE MENU */}
+      <nav className={`side-menu ${isMenuOpen ? 'active' : ''}`}>
+        <div className="menu-content">
+          <p className="menu-label">Navigation</p>
+          <button onClick={() => { setIsMenuOpen(false); window.scrollTo({top:0, behavior:'smooth'}) }}>Top</button>
+          <button onClick={() => scrollToSection('skills')}>Skills</button>
+          <button onClick={() => { setActiveTab('projects'); scrollToSection('main-content'); }}>Projects</button>
+          <button onClick={() => { setActiveTab('achievements'); scrollToSection('main-content'); }}>Achievements</button>
+          
+          <p className="menu-label">Documents</p>
+          <a href={resumeLink} target="_blank" rel="noreferrer" className="resume-btn">View Resume</a>
+          <a href={resumeLink} download className="resume-btn download">Download Resume 📥</a>
+        </div>
+      </nav>
+
+      {/* ANIMATED BACKGROUND */}
       <div className="liquid-bg-blobs">
         <div className="blob one"></div>
         <div className="blob two"></div>
@@ -80,7 +123,7 @@ function App() {
       </div>
 
       <div className="main-glass">
-        {/* NEW MODERN HERO DESIGN */}
+        {/* HERO SECTION */}
         <header className="hero-modern liquid-reveal">
           <div className="hero-badge">Available for Opportunity</div>
           <h1 className="hero-title">
@@ -91,14 +134,21 @@ function App() {
             Performance-driven <strong>Software Engineer</strong>. <br/>
             Specializing in <span>Java Full Stack Development</span>, Microservices, and scalable architectures.
           </p>
+
+          {/* MAIN SCREEN RESUME OPTIONS */}
+          <div className="hero-resume-wrap">
+            <a href={resumeLink} target="_blank" rel="noreferrer" className="hero-resume-btn outline">View Resume</a>
+            <a href={resumeLink} download className="hero-resume-btn filled">Download Resume 📥</a>
+          </div>
+
           <div className="hero-stats">
-            <div className="stat-item"><strong>8.98</strong> CGPA</div>
             <div className="stat-item"><strong>129+</strong> LeetCode</div>
-            <div className="stat-item"><strong>TCS</strong> Rank 4196</div>
+            <div className="stat-item"><strong>Global Rank 4196</strong> TCS CodeVita</div>
           </div>
         </header>
 
-        <section className="skills-dashboard liquid-reveal">
+        {/* SKILLS SECTION */}
+        <section id="skills" className="skills-dashboard liquid-reveal">
           {skills.map((group, idx) => (
             <div className="skill-tile" key={idx}>
               <div className="tile-glow"></div>
@@ -110,11 +160,13 @@ function App() {
           ))}
         </section>
 
-        <nav className="tab-switcher liquid-reveal">
-          <button className={activeTab === 'projects' ? 'active' : ''} onClick={() => {setActiveTab('projects'); handleErrors()}}>Featured Projects</button>
-          <button className={activeTab === 'achievements' ? 'active' : ''} onClick={() => {setActiveTab('achievements'); handleErrors()}}>Key Achievements</button>
+        {/* TAB NAVIGATION */}
+        <nav id="main-content" className="tab-switcher liquid-reveal">
+          <button className={activeTab === 'projects' ? 'active' : ''} onClick={() => setActiveTab('projects')}>Featured Projects</button>
+          <button className={activeTab === 'achievements' ? 'active' : ''} onClick={() => setActiveTab('achievements')}>Key Achievements</button>
         </nav>
 
+        {/* CONTENT GRID */}
         <main className="responsive-grid">
           {activeTab === 'projects' ? (
             projectData.map((p, i) => (
@@ -135,17 +187,18 @@ function App() {
                 <div className="card-icon">{a.icon}</div>
                 <span className="tech-tag">{a.detail}</span>
                 <h3>{a.title}</h3>
-                <p>{a.sub}</p>
+                <p className='desc'>{a.sub}</p>
               </div>
             ))
           )}
         </main>
 
+        {/* FOOTER */}
         <footer className="centered-footer liquid-reveal">
           <div className="footer-socials">
-            <a href="mailto:yaswanth.pellakuru08@gmail.com" className="footer-btn" onClick={handleErrors}>Email</a>
-            <a href="https://www.linkedin.com/in/yaswanth-pellakuru-194a13259/" target="_blank" rel="noreferrer" className="footer-btn" onClick={handleErrors}>LinkedIn</a>
-            <a href="https://github.com/Pellakuru-Yaswanth" target="_blank" rel="noreferrer" className="footer-btn" onClick={handleErrors}>GitHub</a>
+            <a href="mailto:yaswanth.pellakuru08@gmail.com" className="footer-btn">Email</a>
+            <a href="https://www.linkedin.com/in/yaswanth-pellakuru-194a13259/" target="_blank" rel="noreferrer" className="footer-btn">LinkedIn</a>
+            <a href="https://github.com/Pellakuru-Yaswanth" target="_blank" rel="noreferrer" className="footer-btn">GitHub</a>
           </div>
           <p className="copy">© 2026 Yaswanth Pellakuru | Nellore, AP</p>
         </footer>
