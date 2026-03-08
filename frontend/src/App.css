@@ -85,6 +85,7 @@ body {
 .menu-trigger.open .bar:nth-child(1) { transform: translateY(4.5px) rotate(45deg); }
 .menu-trigger.open .bar:nth-child(2) { transform: translateY(-4.5px) rotate(-45deg); }
 
+/* --- SIDE MENU (MOBILE OPTIMIZED) --- */
 .side-menu {
   position: fixed; 
   top: 0; 
@@ -121,12 +122,13 @@ body {
 .resume-btn { 
   border: 1px solid #e2e8f0 !important; padding: 12px 20px !important; 
   border-radius: 12px; font-size: 0.9rem !important; text-align: center !important; 
+  margin-top: 5px;
 }
 .resume-btn.download { background: var(--text-dark); color: white !important; opacity: 1; border: none !important; }
 
-/* --- MAIN CONTAINER (GRID REMOVED) --- */
+/* --- MAIN CONTAINER (BORDERLESS) --- */
 .portfolio-parent { 
-  padding: 80px 20px; /* Provides vertical breathing room */
+  padding: 80px 20px;
   display: flex; 
   justify-content: center; 
 }
@@ -134,11 +136,11 @@ body {
 .main-glass {
   max-width: 1100px;
   width: 100%;
-  background: transparent; /* Removed the outer white box */
-  backdrop-filter: none; /* Removed the blur from the outer container */
+  background: transparent;
+  backdrop-filter: none;
   border-radius: 0;
   border: none;
-  padding: 0; /* Content now flows naturally */
+  padding: 0;
   transform: translateZ(0);
   backface-visibility: hidden;
 }
@@ -207,21 +209,36 @@ body {
 .glass-pill { display: inline-block; background: white; padding: 8px 14px; border-radius: 12px; margin: 4px; font-size: 0.85rem; font-weight: 600; border: 1px solid #f1f5f9; transition: 0.3s; }
 .glass-pill:hover { background: var(--primary); color: white; transform: scale(1.05); }
 
-/* --- TABS & CONTENT --- */
+/* --- TABS & CONTENT (PROJECTS/ACHIEVEMENTS) --- */
 .tab-switcher { display: flex; justify-content: center; gap: 12px; margin-bottom: 45px; }
 .tab-switcher button { background: var(--glass); border: 1px solid white; padding: 12px 28px; border-radius: 16px; font-weight: 700; color: var(--text-light); transition: 0.3s; backdrop-filter: blur(10px); }
 .tab-switcher button.active { background: var(--text-dark); color: white; border-color: var(--text-dark); }
 
 .responsive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-.project-card {
-  background: var(--white); padding: 45px; border-radius: 35px;
-  display: flex; flex-direction: column; transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+/* GLOBAL HOVER REFLECTION FIX */
+.project-card, .achievement-card, .lift-card {
+  background: var(--white); 
+  padding: 45px; 
+  border-radius: 35px;
+  display: flex; 
+  flex-direction: column; 
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+  border: 1px solid transparent;
 }
-.project-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.06); }
+
+.project-card:hover, 
+.achievement-card:hover, 
+.lift-card:hover { 
+  transform: translateY(-12px) !important; 
+  box-shadow: 0 30px 60px rgba(99, 102, 241, 0.1) !important;
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
 .tech-tag { color: var(--primary); font-weight: 800; font-size: 0.7rem; text-transform: uppercase; }
-.project-card h3 { margin: 15px 0; font-size: 1.6rem; }
-.project-card .desc { color: var(--text-light); line-height: 1.7; font-size: 1rem; margin-bottom: 30px; flex-grow: 1; }
+.project-card h3, .achievement-card h3 { margin: 15px 0; font-size: 1.6rem; }
+.project-card .desc, .achievement-card .desc { color: var(--text-light); line-height: 1.7; font-size: 1rem; margin-bottom: 30px; flex-grow: 1; }
 
 .btn-group { display: flex; gap: 12px; margin-top: auto; }
 .action-btn { flex: 1; text-align: center; text-decoration: none; padding: 14px; border-radius: 15px; font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
@@ -258,5 +275,5 @@ body {
   .hero-title { font-size: 2.5rem; }
   .menu-trigger { top: 20px; right: 20px; width: 45px; height: 45px; }
   .stat-item { width: 100%; text-align: center; }
-  .project-card { padding: 30px; }
+  .project-card, .achievement-card { padding: 30px; }
 }
