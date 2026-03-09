@@ -28,7 +28,7 @@ function App() {
   const resumeLink = "https://drive.google.com/file/d/1Ox6OZ5-l2nj0r55QTjtrfpGwrd10lNYj/view?usp=drive_link";
 
   const skills = [
-    { cat: "Programming Languages", items: ["Java", "Streams API)", "JavaScript (ES6+)", "SQL", "HTML5", "CSS3", "SQL", "Python"]},
+    { cat: "Programming Languages", items: ["Java", "Streams API", "JavaScript (ES6+)", "SQL", "HTML5", "CSS3", "SQL", "Python"]},
     { cat: "Backend Technologies", items: ["Spring Boot", "Spring MVC", "Spring Data JPA", "Hibernate ORM", "Microservices", "Node.js", "Express"] },
     { cat: "Frontend Technologies", items: ["React.js", "Redux/Context API", "Axios", "Bootstrap"] },
     { cat: "API & Web Services", items: ["RESTful APIs (Design & Dev)", "JSON"]},
@@ -60,7 +60,7 @@ function App() {
 
   const achievementData = [
     { title: "TCS Codevita S11", detail: "Global Rank 4196", sub: "Achieved elite ranking in the top 4% of participants worldwide.", icon: "🏆" },
-    { title: "LeetCode Mastery", detail: "129+ Problems", sub: "Solved 71 Easy, 52 Medium, and 6 Hard problems showcasing advanced DSA proficiency.", icon: "💻" },
+    { title: "LeetCode Mastery", detail: "135+ Problems", sub: "Solved 74 Easy, 57 Medium, and 7 Hard problems showcasing advanced DSA proficiency.", icon: "💻" },
     { title: "Competition Winner", detail: "1st Place", sub: "Winner of inter-collegiate coding competitions at NECN and GIST Institution.", icon: "🥇" },
     { title: "HackerRank Certifications", detail: "Certified", sub: "Certified in Java, JavaScript, and Python.", icon: "📜" }
   ];
@@ -142,7 +142,7 @@ function App() {
           </div>
 
           <div className="hero-stats">
-            <div className="stat-item"><strong>129+</strong> LeetCode</div>
+            <div className="stat-item"><strong>135+</strong> LeetCode</div>
             <div className="stat-item"><strong>Global Rank 4196</strong> TCS CodeVita</div>
           </div>
         </header>
