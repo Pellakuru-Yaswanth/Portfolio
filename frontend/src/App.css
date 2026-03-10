@@ -212,6 +212,7 @@ body {
 /* --- TABS & CONTENT (PROJECTS/ACHIEVEMENTS) --- */
 .tab-switcher { display: flex; justify-content: center; gap: 12px; margin-bottom: 45px; }
 .tab-switcher button { background: var(--glass); border: 1px solid white; padding: 12px 28px; border-radius: 16px; font-weight: 700; color: var(--text-light); transition: 0.3s; backdrop-filter: blur(10px); }
+.tab-switcher button:hover { color: blue;}
 .tab-switcher button.active { background: var(--text-dark); color: white; border-color: var(--text-dark); }
 
 .responsive-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
@@ -276,4 +277,8 @@ body {
   .menu-trigger { top: 20px; right: 20px; width: 45px; height: 45px; }
   .stat-item { width: 100%; text-align: center; }
   .project-card, .achievement-card { padding: 30px; }
+}
+.error{
+  color: red;
+  font-size: small;
 }
