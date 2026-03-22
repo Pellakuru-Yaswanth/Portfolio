@@ -25,7 +25,7 @@ function App() {
   }, [activeTab]);
 
   // Replace YOUR_FILE_ID_HERE with your actual Google Drive ID
-  const resumeLink = "https://drive.google.com/file/d/12PrX87CA-Ux8KSEbp-sIuSh0iAvZSRYW/view?usp=drive_link";
+  const resumeLink = "https://drive.google.com/file/d/1yenG6NS2L436e7kNGnAh-izD_TFfXX0_/view?usp=drive_link";
 
   const skills = [
     { cat: "Programming Languages", items: ["Java", "Streams API", "JavaScript (ES6+)", "SQL", "HTML5", "CSS3", "SQL", "Python"]},
@@ -60,7 +60,7 @@ function App() {
 
   const achievementData = [
     { title: "TCS Codevita S11", detail: "Global Rank 4196", sub: "Achieved elite ranking in the top 4% of participants worldwide.", icon: "🏆" },
-    { title: "LeetCode Mastery", detail: "135+ Problems", sub: "Solved 74 Easy, 57 Medium, and 7 Hard problems showcasing advanced DSA proficiency.", icon: "💻" },
+    { title: "LeetCode Mastery", detail: "145+ Problems", sub: "Solved 77 Easy, 63 Medium, and 7 Hard problems showcasing advanced DSA proficiency.", icon: "💻" },
     { title: "Competition Winner", detail: "1st Place", sub: "Winner of inter-collegiate coding competitions at NECN and GIST Institution.", icon: "🥇" },
     { title: "HackerRank Certifications", detail: "Certified", sub: "Certified in Java, JavaScript, and Python.", icon: "📜" }
   ];
@@ -142,7 +142,7 @@ function App() {
           </div>
 
           <div className="hero-stats">
-            <div className="stat-item"><strong>135+</strong> LeetCode</div>
+            <div className="stat-item"><strong>145+</strong> LeetCode</div>
             <div className="stat-item"><strong>Global Rank 4196</strong> TCS CodeVita</div>
           </div>
         </header>
