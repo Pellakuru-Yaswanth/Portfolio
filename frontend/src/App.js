@@ -197,7 +197,7 @@ function App() {
         <footer className="centered-footer liquid-reveal">
           <div className="footer-socials">
             <a href="mailto:yaswanth.pellakuru08@gmail.com" className="footer-btn" onClick={() => setProjectErrors(prev => ["", ""])}>Email</a>
-            <a href="https://www.linkedin.com/in/yaswanth-pellakuru-194a13259/" target="_blank" rel="noreferrer" className="footer-btn" onClick={() => setProjectErrors(prev => ["", ""])}>LinkedIn</a>
+            <a href="https://www.linkedin.com/in/yaswanth-pellakuru/" target="_blank" rel="noreferrer" className="footer-btn" onClick={() => setProjectErrors(prev => ["", ""])}>LinkedIn</a>
             <a href="https://github.com/Pellakuru-Yaswanth" target="_blank" rel="noreferrer" className="footer-btn" onClick={() => setProjectErrors(prev => ["", ""])}>GitHub</a>
           </div>
           <p className="copy">© 2026 Yaswanth Pellakuru | Nellore, AP</p>
