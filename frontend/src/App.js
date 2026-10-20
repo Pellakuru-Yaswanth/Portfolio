@@ -25,7 +25,7 @@ function App() {
   }, [activeTab]);
 
   // Replace YOUR_FILE_ID_HERE with your actual Google Drive ID
-  const resumeLink = "https://drive.google.com/file/d/1yenG6NS2L436e7kNGnAh-izD_TFfXX0_/view?usp=drive_link";
+  const resumeLink = "https://drive.google.com/file/d/19NsmpFiaN5-dT-Vpu2_7Wh-yGfn3wRjL/view?usp=drive_link";
 
   const skills = [
     { cat: "Programming Languages", items: ["Java", "Streams API", "JavaScript (ES6+)", "SQL", "HTML5", "CSS3", "SQL", "Python"]},
